@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        "use srtict"
+        function f1() {
+            var productNames = ["tv", "mobile", "watch"];
+            function printValues() {
+                document.write(productNames.toString() + "<br>");
+            }
+            printValues();
+
+            productNames.splice(2, 1, "Nike Shoe", "LeeCopper boot")
+            printValues();
+
+        }
+        f1();
+    </script>
+
+</head>
+
+</html>

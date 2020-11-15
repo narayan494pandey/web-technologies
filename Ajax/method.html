@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $.getJSON("../data/product.JSON", function (data) {
+                    $.each(data, function (key, val) {
+                        $("#tblBody")
+                            .append(
+                                `<tr>
+                        <td>${val.Name}</td>
+                        <td>${val.Price}</td>
+                        </tr> `
+                            )
+                    })
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <button>
+        Get file
+    </button>
+    <table width="400" border="1">
+        <thead>
+            <th>Name</th>
+            <th>Price</th>
+        </thead>
+        <tbody id="tblBody"></tbody>
+    </table>
+</body>
+
+</html>

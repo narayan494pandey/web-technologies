@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Card Example</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <form style="width:200px">
+            <h2>Register User</h2>
+            <div class="form-group">
+                <label>User Name</label>
+                <div>
+                    <input type="text" class="form-control">
+                    <span class="form-text text-danger">Name required</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <div>
+                    <input type="password" class="form-control">
+                    <span class="form-text text-danger">Password required</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <div>
+                    <select class="form-control">
+                        <option>Choose Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>others</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group text-center">
+
+                <input type="checkbox" class="form-check-inline">
+                <label class="form-check-label">Accept terms</label>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block">Register</button>
+            </div>
+        </form>
+    </div>
+</body>

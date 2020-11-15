@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        "use srtict"
+        function f1() {
+            var productNames = ["tv", "mobile", "watch"];
+            var productPrices = [10000, 3400, 56000, 4100];
+            document.write("To String = " + productNames.toString() + "<br>");
+            document.write("Join = " + productNames.join("-->") + "<br>");
+            document.write("Slice = " + productNames.slice(1, 3) + "<br>");
+            document.write("filter = " + productNames.filter(
+                function (product) {
+                    return product = "watch";
+                }
+            ) + "<br>");
+            function filterPrices(price) {
+                return price < 10000;
+            }
+            document.write("Filter = " + productPrices.filter(filterPrices));
+
+        }
+        f1();
+    </script>
+
+</head>
+
+</html>

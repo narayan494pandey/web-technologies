@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#btnEffect").click(function () {
+          $("#data").html($("form").serialize());
+          var result = $("form").serializeArray();
+          for (var properties in result) {
+            alert(result[properties].value);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="btnEffect">Serialize</button>
+    <form>
+      <dl>
+        <dt>Name</dt>
+        <dd><input type="text" name="txtName" /></dd>
+        <dt>Price</dt>
+        <dd><input type="text" name="txtPrice" /></dd>
+        <dt>City</dt>
+        <dd>
+          <select name="lstCity">
+            <option value="Delhi">Delhi</option>
+            <option value="HYd">HYD</option>
+          </select>
+        </dd>
+      </dl>
+    </form>
+  </body>
+</html>

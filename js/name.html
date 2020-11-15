@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+        function bodyload() {
+            window.document.images[0].src = "../images/tv.jpg";
+            frmRegister.btnRegister.value = "Register";
+        }
+    </script>
+</head>
+
+<body onload="bodyload()">
+    <div>
+        <img width="200" height="100" border="1" name="pic" id="pic">
+    </div>
+    <form id="frmRegister" name="frmRegister">
+        Name:
+        <input name="txtName" id="txtName" type="text">
+        <input name="btnRegister" id="btnRegister" type="button">
+    </form>
+</body>
+
+</html>

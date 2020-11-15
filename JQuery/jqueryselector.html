@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("h2").text("JQuery Selectors");
+            $("#para").text("Id Selector");
+            $(".para").text("Class Selector");
+            $("p").css("background-color", "red");
+            $("h2").css({ "background-color": "green", "color": "white" });
+
+        })
+    </script>
+</head>
+
+<body>
+    <h2></h2>
+    <p id="para"></p>
+    <p class="para"></p>
+</body>
+
+</html>

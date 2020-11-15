@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#p3").before("<p>para2</p>").append("<P>this is </p>");
+            $("#p3").after("<p>this is para4</p>");
+            $("<li>Item-1</li>").appendTo("#terms");
+            $("#terms").append("<li>Item-2</li>");
+            $("#p3").detach();
+        })
+    </script>
+</head>
+
+<body>
+    <p id="p1">this is para1</p>
+    <p id="p3">this is para3</p>
+    <ol id="terms"></ol>
+</body>
+
+</html>

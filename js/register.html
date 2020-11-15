@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        label {
+            font-weight: bold;
+        }
+
+        #popup {
+            position: fixed;
+            top: 10px;
+            left: 500px;
+        }
+    </style>
+    <script type="text/javascript">
+        function bodyload() {
+            document.getElementById("popup").style.display = "none"
+        }
+        function RegisterClick() {
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("lblId").innerHTML = document.getElementById("txtId").value;
+            document.getElementById("lblName").innerHTML = document.getElementById("txtName").value;
+            document.getElementById("lblStock").innerHTML = frmRegister.stock.value;
+            document.getElementById("lblShipped").innerHTML = document.getElementById("lstCities").value;
+
+        }
+        function OkClick() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+</head>
+
+<body onload="bodyload()">
+    <div class="container">
+        <form name="frmRegister">
+            <fieldset style="width:300px">
+                <legend>Register Product</legend>
+                <div class="form-group">
+                    <label>Product Id</label>
+                    <div>
+                        <input type="text" id="txtId" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Name</label>
+                    <div>
+                        <input type="text" id="txtName" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Is in Stock</label>
+                    <div>
+                        <input type="radio" name="stock" value="available">Yes
+                        <input type="radio" name="stock" value="out of stock">No
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Shipped To</label>
+                    <div>
+                        <select id="lstCities">
+                            <option value="Delhi">Delhi</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="button" onclick="RegisterClick()" class=" btn btn-primary" value="register">
+                </div>
+            </fieldset>
+        </form>
+        <div id="popup">
+            <div class="card" style="width:300px;">
+                <div class="card-header">
+                    <h2>Product details</h2>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <colgroup span="1" style="background-color: bisque;"></colgroup>
+                        <tbody>
+                            <tr>
+                                <td>Product Id</td>
+                                <td id="lblId"> </td>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
+                                <td id="lblName"> </td>
+                            </tr>
+                            <tr>
+                                <td>Stock Status</td>
+                                <td id="lblStock"> </td>
+                            </tr>
+                            <tr>
+                                <td>Shipped To</td>
+                                <td id="lblShipped"> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <input type="button" class="btn btn-danger" value="Ok" onclick="OkClick()">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

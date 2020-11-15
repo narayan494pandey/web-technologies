@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Flexbox align starting code</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        min-width: 70%;
+        max-width: 960px;
+        margin: 20px auto;
+      }
+
+      button {
+        font-size: 18px;
+        line-height: 1.5;
+        width: 15%;
+      }
+
+      div {
+        border: 1px solid black;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+      button:first-child {
+        align-self: flex-end;
+      }
+      button:nth-of-type(3) {
+        align-self: flex-start;
+      }
+      button:nth-of-type(5) {
+        align-self: flex-end;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button>Smile</button>
+      <button>Laugh</button>
+      <button>Wink</button>
+      <button>Shrug</button>
+      <button>Blush</button>
+    </div>
+  </body>
+</html>

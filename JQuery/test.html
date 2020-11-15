@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("h2,h3").text("jquery heading");
+        $("#para,#sara").text("Id selector");
+        $(".para").text("class selector");
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#txtName").val("John");
+        $("#pic").attr("src", "../images/tv.jpg");
+      });
+    </script>
+  </head>
+  <body>
+    <h2></h2>
+    <p id="para"></p>
+    <p id="sara"></p>
+    <p class="para"></p>
+    <h3>Hello</h3>
+    Username:
+    <input type="text" id="txtName" />
+    <div>
+      <img id="pic" width="100" height="100" />
+    </div>
+  </body>
+</html>

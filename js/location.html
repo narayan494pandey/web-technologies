@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function GetDetails() {
+            server = location.host;
+            var serverName;
+            if (server == "localhost") {
+                serverName = `you are using local ${server}`;
+            } else {
+                serverName = `you are using IP Address ${server}`;
+            }
+            document.getElementById("server").innerHTML = serverName;
+            document.getElementById("protocol").innerHTML = location.protocol;
+            document.getElementById("url").innerHTML = location.href;
+        }
+
+    </script>
+</head>
+
+<body>
+    <h2>Get client location</h2>
+    <table class="table table-hover table-light">
+        <tr align="center" colspan="2">
+            <td><button onclick="GetDetails()" class="btn btn-outline-primary">Get Client Details</button></td>
+        </tr>
+        <tr>
+            <td>Server Name/IP Address:</td>
+            <td id="server"></td>
+        </tr>
+        <tr>
+            <td>Protocol Name:</td>
+            <td id="protocol"></td>
+        </tr>
+        <tr>
+            <td>URL:</td>
+            <td id="url"></td>
+        </tr>
+    </table>
+</body>
+
+</html>

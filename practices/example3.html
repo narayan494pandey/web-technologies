@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>legend</title>
+    <style>
+        fieldset {
+            width: 300px;
+
+            background-color: gray;
+        }
+
+        legend {
+            background-color: yellow;
+            border: 2px solid;
+        }
+
+        input[type=text] {
+            border: 2px solid black;
+            background-color: whitesmoke;
+
+        }
+
+        b {
+            border: 2px solid black;
+            background-color: gray;
+
+        }
+
+        table {
+            border: 2px solid black;
+            background-color: green;
+            display: inline-block;
+            margin-left: 100px;
+
+
+
+        }
+    </style>
+    <script>
+        function validation() {
+            var name = document.getElementById("txtName").value;
+            var gender = document.getElementById("txtGender").value;
+            var qual = document.getElementById("txtQua").value;
+            regExp = /(?=.*[A-Z])(?=.*[a-z])\w/;
+            if (name.match(regExp)) {
+
+                alert("Hello ! " + name);
+
+            } else {
+                alert("give valid  name");
+            }
+        }
+    </script>
+</head>
+<form>
+    <fieldset>
+        <legend> Registration_Form</legend>
+        <h2>Name: <span><input type="text" name="txtName" id="txtName" required></span></h2>
+        <h3>Gender:
+            <b>
+                <span><input type="radio" name="Gender" id="txtGender" value="Male" required>Male
+                    <input type="radio" name="Gender" value="Female" required>Female</span>
+            </b>
+
+        </h3>
+        <h3>
+            <h3>Qualification:</h3>
+            <table height="70px" width="200">
+                <tr>
+                    <td>
+                        <span><input type="radio" name="Qualification" id="txtQua" value="BCA" required>BCA</span>
+                        <span><input type="radio" name="Qualification" id="txtQua" value="BSc" required>BSc</span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <span><input type="radio" name="Qualification" id="txtQua" value="MCA" required>MCA</span>
+                        <span><input type="radio" name="Qualification" id="txtQua" value="MTech" required>MTech</span>
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+
+            </div>
+
+
+            <div align="center"> <button onclick="validation()">submit</button></div>
+
+    </fieldset>
+</form>
+</div>
+</body>
+
+</html>

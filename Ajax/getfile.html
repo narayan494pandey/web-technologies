@@ -1,0 +1,25 @@
+<head>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $.get("../forms/register.html").
+                    done(function (data) {
+                        alert("file found");
+                        $("#msg").html(data);
+                    }).fail(function () {
+                        alert("file not found");
+                    }).always(function () {
+                        alert("your request complete")
+                    })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <button>
+        Get file
+    </button>
+    <div id="msg"></div>
+</body>

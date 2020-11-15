@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .effects {
+            background-color: yellow;
+        }
+    </style>
+    <script type="text/javascript">
+        function bodyload() {
+            var collection = document.getElementsByTagName("h2");
+            var payment = document.getElementsByName("pay");
+            var effects = document.getElementsByClassName("effects");
+            alert("Total Headings:" + collection.length);
+            alert("Total Payment Methods:" + payment.length);
+            alert("Total no of Element using Effects class:" + effects.length);
+
+        }
+
+    </script>
+</head>
+
+<body onload="bodyload()">
+    <h2>HTML</h2>
+    <p class="effects"> Markup language</p>
+    <h2>CSS</h2>
+    <p>Style for HTML</p>
+    <fieldset>
+        <legend class="effects">Payment method</legend>
+        <input type="radio" name="pay">Credit Card
+        <input type="radio" name="pay">UPI Transfer
+        <input type="radio" name="pay">Cash on Delivery
+    </fieldset>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #start {
+            border: 2px black solid;
+            color: blue;
+            height: 30px;
+            width: 100px;
+        }
+    </style>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(document).ajaxComplete(function (even, XHR, settings) {
+            $("#log").html(
+                `<dl>
+            <dt>Status text</dt> 
+            <dd>${XHR.statusText}</dd>
+            <dt>Status code</dt> 
+            <dd>${XHR.status}</dd>
+            <dt>Response Text</dt> 
+            <dd>${XHR.responseText}</dd>
+            `
+            )
+        })
+        $(document).ready(function () {
+            $("#start").click(function () {
+                $("#result").load("../data/product.JSON");
+            })
+        })
+    </script>
+
+</head>
+
+<body>
+    <div id="start">
+        start
+    </div>
+    <div id="log">
+    </div>
+    <pre id="result">
+
+    </pre>
+</body>
+
+</html>

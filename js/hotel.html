@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        #dialog {
+            width: 500px;
+            height: 800px;
+            position: fixed;
+            margin-top: 0px;
+            margin-left: 300px;
+        }
+    </style>
+    <script>
+        function CloseDialog() {
+            document.getElementById("dialog").style.display = "none";
+        }
+        function Register() {
+            var advanceAmount = parseInt(document.getElementById("txtAdvancedAmount").value);
+            if (advanceAmount < 2500) {
+                document.getElementById("txtRegister").disabled = true;
+            }
+            if (advanceAmount >= 2500) {
+                document.getElementById("txtRegister").disabled = false;
+            }
+
+        }
+        function ShowDialog() {
+            document.getElementById("dialog").style.display = "block";
+            document.getElementById("lblName").innerHTML = document.getElementById("txtName").value;
+            document.getElementById("lblDate").innerHTML = document.getElementById("txtDate").value;
+            document.getElementById("lblDay").innerHTML = document.getElementById("txtDay").value;
+            document.getElementById("lblPerson").innerHTML = document.getElementById("txtPerson").value;
+            document.getElementById("lblAdvancedAmount").innerHTML = "&#8377;" + document.getElementById("txtAdvancedAmount").value + "/-";
+            var roomName = " ";
+            var amenitiesName = " ";
+            var roomCost = 0;
+            var amenitiesCost = 0;
+            var balanceAmount = 0;
+            var totalAmount = 0;
+            var totalPerson = parseInt(document.getElementById("txtPerson").value);
+            var totalDay = parseInt(document.getElementById("txtDay").value);
+            var advanceAmount = parseInt(document.getElementById("txtAdvancedAmount").value);
+            var deluxe = document.getElementById("optDeluxe");
+            var suite = document.getElementById("optSuite");
+            var ac = document.getElementById("optAc");
+            var locker = document.getElementById("optLocker");
+            if (totalPerson <= 2) {
+                if (deluxe.checked) {
+                    roomName = deluxe.value;
+                    roomCost = 2500;
+                }
+                if (suite.checked) {
+                    roomName = suite.value;
+                    roomCost = 4500;
+                }
+                if (ac.checked) {
+                    amenitiesName += ac.value + "<br>";
+                    amenitiesCost = 1000;
+                    roomCost = roomCost + amenitiesCost;
+                }
+                if (locker.checked) {
+                    amenitiesName += locker.value + "<br>";
+                    amenitiesCost = 500;
+                    roomCost = roomCost + amenitiesCost;
+                    roomCost = roomCost * totalDay;
+                }
+            }
+            if (totalPerson >= 3) {
+                if (deluxe.checked) {
+                    roomName = deluxe.value;
+                    roomCost = 2500;
+
+                }
+                if (suite.checked) {
+                    roomName = suite.value;
+                    roomCost = 4500;
+                }
+                if (ac.checked) {
+                    amenitiesName += ac.value + "<br>";
+                    amenitiesCost = 1000;
+                    roomCost = roomCost + amenitiesCost;
+                }
+                if (locker.checked) {
+                    amenitiesName += locker.value + "<br>";
+                    amenitiesCost = 500;
+                    roomCost = roomCost + amenitiesCost;
+                    roomCost = (roomCost * totalDay) + (500 * totalDay * (totalPerson - 2));
+                }
+
+            }
+            balanceAmount = roomCost - advanceAmount;
+            document.getElementById("lblRoom").innerHTML = roomName;
+            document.getElementById("lblAmenities").innerHTML = amenitiesName;
+            document.getElementById("lblTotalAmount").innerHTML = "&#8377;" + roomCost + "/-";
+            document.getElementById("lblBalanceAmount").innerHTML = "You have to pay:" + "&#8377;" + balanceAmount + "/-";
+        }
+    </script>
+</head>
+
+<body onload="CloseDialog()">
+    <div style="margin-top: 1px;" class="container-fluid text-center">
+        <div id="dialog">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Bill Summary</h3>
+                </div>
+                <div class="card-body ">
+                    <dl>
+                        <dt>Customer Name :</dt>
+                        <dd id="lblName"></dd>
+                        <dt>Check-In-Date :</dt>
+                        <dd id="lblDate"></dd>
+                        <dt>Total-No-Day :</dt>
+                        <dd id="lblDay"></dd>
+                        <dt>Total No Of Person :</dt>
+                        <dd id="lblPerson"></dd>
+                        <dt>Room Type :</dt>
+                        <dd id="lblRoom"></dd>
+                        <dt>Amenities :</dt>
+                        <dd id="lblAmenities"></dd>
+
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <dl>
+                        <dt>Advanced Amount :</dt>
+                        <dd id="lblAdvancedAmount"></dd>
+                        <dt>Total Amount :</dt>
+                        <dd id="lblTotalAmount"></dd>
+                        <dt>Balance Amount :</dt>
+                        <dd id="lblBalanceAmount"></dd>
+                    </dl>
+                    <input type="button" value="OK" class="btn btn-outline-danger" onclick="CloseDialog()">
+                </div>
+            </div>
+        </div>
+        <header>
+            <div>
+                <img src="../Images/hoteltop.jpg" class="img-thumbnail">
+            </div>
+        </header>
+        <section>
+            <div style="margin-top: 10px;" class="bg-secondary text-white">
+                <fieldset>
+                    <legend>
+                        <b>Customer Info</b>
+                    </legend>
+                    <div>
+                        <table align="center">
+                            <tr>
+                                <td>Name</td>
+                                <td>
+                                    <input type="text" id="txtName" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Check-In-Date</td>
+                                <td>
+                                    <input type="date" id="txtDate" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total No Of Days</td>
+                                <td>
+                                    <input type="number" id="txtDay" class="form-control" min="1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total No Of Person</td>
+                                <td>
+                                    <input type="number" id="txtPerson" class="form-control" min="1">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </fieldset>
+            </div>
+            <div style="margin-top: 10px;" class="bg-secondary">
+                <h2 class="text-white">Select Room</h2>
+                <div class="card-deck">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Deluxe Room</h3>
+                        </div>
+                        <div class="card-body">
+                            <img src="../Images/deluxe.jpg" class="img-thumbnail">
+                            <input class="form-control" type="radio" id="optDeluxe" name="Room" value="Deluxe Room">
+                        </div>
+                        <div class="card-footer">
+                            <h3>&#8377; 2500/-Day </h3>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Suite Room</h3>
+                        </div>
+                        <div class="card-body">
+                            <img src="../Images/suite.jpg" class="img-thumbnail">
+                            <input class="form-control" type="radio" id="optSuite" name="Room" value="Suite Room">
+                        </div>
+                        <div class="card-footer">
+                            <h3>&#8377; 4500/-Day </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 10px;" class="bg-secondary">
+                <h2 class="text-white">Select Amenities</h2>
+                <div class="card-deck">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>A/C</h3>
+                        </div>
+                        <div class="card-body">
+                            <img src="../Images/ac.jpg" class="img-thumbnail">
+                            <input class="form-control" type="checkbox" id="optAc" value="A/c">
+                        </div>
+                        <div class="card-footer">
+                            <h3>&#8377; 1000/-Day </h3>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Locker</h3>
+                        </div>
+                        <div class="card-body">
+                            <img src="../Images/loker.jpg" class="img-thumbnail">
+                            <input class="form-control" type="checkbox" id="optLocker" value="Locker">
+                        </div>
+                        <div class="card-footer">
+                            <h3>&#8377; 500/-Day </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 10px;" class="bg-secondary">
+                <h2 class="text-white">Advance Amount</h2>
+                <div>
+                    <table align="center">
+                        <tr>
+                            <td>Amount</td>
+                            <td>
+                                <input type=" number" id="txtAdvancedAmount" class="form-control" onkeyup="Register()">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div style="margin-top: 20px;">
+                <input disabled id="txtRegister" type="button" value="Register Room" class="btn btn-outline-info"
+                    onclick="ShowDialog()">
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

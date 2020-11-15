@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var topics = [
+            { list: ["HTML", "CSS", "JavaScript"], category: "UI" },
+            { list: ["Angular", "Angular Js", "MVC"], category: "Framework" }
+        ];
+        function GetString() {
+            var str = location.search;
+            var word = str.substring(str.indexOf("=") + 1);
+            var results = topics.filter(x => x.category == word);
+            for (var i = 0; i < results.length; i++) {
+
+                for (var val of results[i].list) {
+                    var item = document.createElement("li");
+                    item.innerHTML = val;
+                    document.getElementById("topicsList").appendChild(item);
+                }
+
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <form>
+        <div align="center">
+            <font size="6">Google</font>
+
+            <div>
+                <input name="search" type="text" id="txtSearch" size="40">
+            </div>
+            <button class="btn btn-outline-primary mt-3">Search Google</button>
+            <input type="button" class="btn btn-outline-primary mt-3" value="Get Search String" onclick="GetString()">
+        </div>
+    </form>
+    <div>
+        <h2 align="center">Results</h2>
+        <ol id="topicsList">
+
+        </ol>
+    </div>
+</body>
+
+</html>

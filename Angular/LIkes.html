@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js">
+    </script>
+    </script>
+    <script> var myapp = angular.module('MyApp', []);
+        myapp.controller('MyController', function ($scope) {
+            var pics = [{ name: "Range Rower", image: "../Images/rover.jpg", dislikes: 0, likes: 0 },
+            { name: "Ferrari", image: "../Images/farrari.jpg", dislikes: 0, likes: 0 },
+            { name: "Audi", image: "../Images/audi.jpg", dislikes: 0, likes: 0 },];
+            $scope.pics = pics;
+            $scope.DislikesCounter = function (item) { item.dislikes++; }
+            $scope.likesCounter = function (item) { item.likes++; }
+        });
+    </script>
+</head>
+
+<body ng-controller="MyController">
+    <table border="1" width="600">
+        <thead>
+            <tr>
+                <td> Car Name </td>
+                <td> Preview </td>
+                <td> Dislikes </td>
+                <td> Likes </td>
+                <td> Dislike / Like </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in pics">
+                <td>{{item.name}}</td>
+                <td><img ng-src="{{item.image}}" width="100" height="70">
+                </td>
+                <td>{{item.dislikes}}</td>
+                <td>{{item.likes}}</td>
+                <td> <a href=""><img ng-src="../Images/dislike.png" ng-click="DislikesCounter(item)" width="50"
+                            height="50"> </a>
+                    <img ng-src="../Images/like.jpg" ng-click="likesCounter(item)" width="50" height="50">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

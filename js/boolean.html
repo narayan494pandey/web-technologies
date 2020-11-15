@@ -1,0 +1,21 @@
+<script>
+    function f1() {
+        var name = "Samsung Tv";
+        var price = 3400;
+        var isInStock = false;
+        var stockStatus = (isInStock == true) ? "available" : "out of STock";
+        document.write("name=" + name + "<br>" + "price= " + price + "<br>" + "stockStatus = " + stockStatus);
+
+    }
+    f1();
+    function f2() {
+        var price;
+        if (price == undefined) {
+            document.write("please provide value for price");
+        }
+        else {
+            document.write("price" + price);
+        }
+    }
+    f2();
+</script>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var cities = ["Select City", "Hyderabad", "Kolkata"];
+        var hyderabad = ["Select Cinema", "INOX", "PVR"];
+        var kolkata = ["Select Cinema", "INOX", "PVR"]
+        var cinemas = [
+            { Name: "INOX" },
+            { Name: "PVR" },
+        ];
+        var inox = ["Select Moive", "Frozen", "Pagalpanti", "Bala", "Mahabharata"];
+        var pvr = ["Select Moive", "Bala", "Mahabharata", "Frozen", "Pagalpanti"];
+        var movies = [
+            { Name: "Frozen", Photo: "../Images/frozen.jpg", time: ["11:00 AM", "2:30 PM"] },
+            { Name: "Pagalpanti", Photo: "../Images/pagalpanti.jpg", time: ["3:00 PM", "9:00PM"] },
+            { Name: "Bala", Photo: "../Images/bala.jpg", time: ["2:00PM", "5:30PM"] },
+            { Name: "Mahabharata", Photo: "../Images/mahabharata.jpg", time: ["8AM", "4:00PM"] },
+        ];
+        var seats = [1, 2, 3, 4, 5];
+        var categories = ["Select class", "Silver", "Gold", "Diamond"];
+
+
+        function bodyload() {
+            lstCities = document.getElementById("lstCities");
+            for (var i = 0; i < cities.length; i++) {
+                var option = document.createElement("option");
+                option.text = cities[i];
+                option.value = cities[i];
+                lstCities.appendChild(option);
+            }
+
+            lstSeat = document.getElementById("lstSeat");
+            for (var i = 0; i < seats.length; i++) {
+                var option = document.createElement("option");
+                option.text = seats[i];
+                option.value = seats[i];
+                lstSeat.appendChild(option);
+            }
+            lstClass = document.getElementById("lstClass");
+            for (var i = 0; i < categories.length; i++) {
+                var option = document.createElement("option");
+                option.text = categories[i];
+                option.value = categories[i];
+                lstClass.appendChild(option);
+            }
+
+        }
+        var getSeat = 1;
+        function SeatChanged() {
+            getSeat = document.getElementById("lstSeat").value;
+        }
+        var classVal
+        var normalCost = 150;
+        var goldCost = 0;
+        var diamondCost = 0;
+        var totalAmount = 0;
+        function ClassChanged() {
+            classVal = document.getElementById("lstClass").value
+            if (classVal == "Normal") {
+                normalCost = 150;
+            }
+            if (classVal == "Gold") {
+                goldCost = 300;
+            }
+            if (classVal == "diamond") {
+                premiumCost = 600;
+            }
+        }
+
+        function AddsCinemas(list) {
+
+            lstCinema = document.getElementById("lstCinema");
+            for (var i = 0; i < list.length; i++) {
+                var option = document.createElement("option");
+                option.text = list[i];
+                option.value = list[i];
+                lstCinema.appendChild(option);
+            }
+        }
+        function CityChanged() {
+            var city = document.getElementById("lstCities").value;
+
+            switch (city) {
+                case "Hyderabad":
+                    document.getElementById("lstCinema").innerHTML = " ";
+                    AddsCinemas(hyderabad);
+                    break;
+                case "Kolkata":
+                    document.getElementById("lstCinema").innerHTML = " ";
+                    AddsCinemas(kolkata);
+                    break;
+                default:
+                    document.getElementById("lstCinema").innerHTML = " ";
+                    alert("Please Select a City");
+                    break;
+            }
+        }
+        var cinema;
+        function CinemaChanged() {
+            var cinemaName = document.getElementById("lstCinema").value;
+            cinema = Cinemas.filter(x => x.Name == cinemaName);
+            document.getElementById("lblCinema").innerHTML = cinema[0].Name;
+        }
+        function AddsMovie(list) {
+            lstMovie = document.getElementById("lstMovie");
+            for (var i = 0; i < list.length; i++) {
+                var option = document.createElement("option");
+                option.text = list[i];
+                option.value = list[i];
+                lstMovie.appendChild(option);
+            }
+        }
+        function CinemaChanged() {
+            var cinema = document.getElementById("lstCinema").value;
+
+            switch (cinema) {
+                case "PVR":
+                    document.getElementById("lstMovie").innerHTML = " ";
+                    AddsMovie(pvr);
+                    break;
+                case "INOX":
+                    document.getElementById("lstMovie").innerHTML = " ";
+                    AddsMovie(inox);
+                    break;
+                default:
+                    document.getElementById("lstMovie").innerHTML = " ";
+                    alert("Please Select a Cinema");
+                    break;
+            }
+        }
+        function AddShowTime(time) {
+            var lstTime = document.getElementById("lstTime");
+            for (var i = 0; i < time.length; i++) {
+                var option = document.createElement("option");
+                option.text = time[i];
+                option.value = time[i];
+                lstTime.appendChild(option);
+            }
+        }
+        var movie;
+        var showTime = [];
+        function MovieChanged() {
+            var movieName = document.getElementById("lstMovie").value;
+            movie = movies.filter(x => x.Name == movieName);
+            document.getElementById("lblMovie").src = movie[0].Name;
+            document.getElementById("poster").src = movie[0].Photo;
+            showTime = movie[0].time
+            var lstTime = document.getElementById('lstTime');
+            document.getElementById('lstTime').innerHTML = '';
+            for (var i = 0; i < showTime.length; i++) {
+                var option = document.createElement('option');
+                option.text = showTime[i];
+                option.value = showTime[i];
+                lstTime.appendChild(option)
+            }
+        }
+        function BookTicketClick(d1) {
+            document.getElementById("lblDate").innerHTML = document.getElementById("d1").value;
+            document.getElementById("lblCities").innerHTML = document.getElementById("lstCities").value;
+            document.getElementById("lblCinema").innerHTML = document.getElementById("lstCinema").value;
+            document.getElementById("lblMovie").innerHTML = document.getElementById("lstMovie").value;
+            document.getElementById("lblTime").innerHTML = document.getElementById("lstShowTime").value;
+            document.getElementById("lblSeat").innerHTML = document.getElementById("lstSeat").value;
+            document.getElementById("lblClass").innerHTML = document.getElementById("lstClass").value;
+            totalAmount = getSeat * normalCost;
+            if (classVal == "Normal" && getSeat) {
+                normalCost = 150;
+                totalAmount = getSeat * normalCost;
+            }
+            if (classVal == "Gold") {
+                goldCost = 300;
+                totalAmount = getSeat * goldCost;
+            }
+            if (classVal == "Premium") {
+                premiumCost = 600;
+                totalAmount = getSeat * premiumCost;
+            }
+            document.getElementById('totalAmount').innerHTML = totalAmount;
+        }
+    </script>
+
+
+</head>
+
+<body onload="bodyload()">
+    <div class="container text-center">
+        <h2 class="text-primary">Moive Ticket Booking</h2>
+        <div class="form-row">
+            <div class="col">
+                <button class="btn btn-outline-info">
+                    <h5>Select City</h5>
+                    <select id="lstCities" class="form-control" onchange="CityChanged()">
+
+                    </select>
+                </button>
+
+            </div>
+
+            <div class="col">
+
+                <button class="btn btn-outline-info">
+                    <h5 id="lblCinema">Select Cinema</h5>
+                    <select id="lstCinema" class="form-control" onchange="CinemaChanged()">
+
+                    </select>
+                </button>
+
+            </div>
+            <div class="col">
+                <button class="btn btn-outline-info ">
+                    <h5 id="lblMovie">Select Movie</h5>
+                    <input id="lstMovie" class="form-control" onchange="MovieChanged()">
+                </button>
+
+            </div>
+            <div class=" col">
+                <button class="btn btn-outline-info">
+                    <h5>Select Date</h5>
+                    <input type="date" id="lstDate" class="form-control">
+
+                </button>
+
+            </div>
+            <div class="col">
+                <button class="btn btn-outline-info ">
+                    <h5>Select Timings</h5>
+                    <select id="lstTime" class="form-control">
+
+                    </select>
+                </button>
+
+            </div>
+            <div class="col">
+                <button class="btn btn-outline-info ">
+                    <h5>Select Seats</h5>
+                    <input type="number" id="lstSeat" class="form-control" min="1" max="5" onchange="SeatChanged()">
+                </button>
+
+            </div>
+
+        </div>
+        <div> <br></div>
+        <div class=" col">
+            <button class="btn btn-outline-info">
+                <h5>Select Class</h5>
+                <select id="lstClass" class="form-control" onchange=" ClassChanged()">
+
+                </select>
+            </button>
+        </div>
+        <div> <br></div>
+        <div class="form-group text-center">
+            <input type="button" value="Book Ticket" onclick="BookTicketClick('lstDate')"
+                class="btn btn-outline-primary">
+        </div>
+        <div>
+            <img id="poster" width="1506" height="410" alt="">
+        </div>
+        <div class="form-group">
+            <h2>Your Booking Details</h2>
+            <table class="table table-warning">
+                <thead>
+                    <th>City</th>
+                    <th>Cinema</th>
+                    <th>Moive</th>
+                    <th>Date</th>
+                    <th>ShowTime</th>
+                    <th>Seats</th>
+                    <th>Class</th>
+                    <th>TotalAmount</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="lblCity"></td>
+                        <td id="lblCinema"></td>
+                        <td id="lblMovie"></td>
+                        <td id="lblDate"></td>
+                        <td id="lblTime"></td>
+                        <td id="lblSeat"></td>
+                        <td id="lblClass"></td>
+                        <td id="totalAmount"></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>

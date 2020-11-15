@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function changeCase() {
+        var uname = document.getElementById("txtName").value;
+        document.getElementById("txtName").value = uname.toUpperCase();
+        var str = "Welcome to Js";
+        document.write(str.fontcolor("green").fontsize(10).toUpperCase());
+      }
+    </script>
+  </head>
+
+  <body>
+    Name:
+    <input
+      type="text"
+      placeholder="Name in Block Letters"
+      id="txtName"
+      onblur="changeCase()"
+    />
+  </body>
+</html>

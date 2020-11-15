@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function printValue() {
+            var str = document.getElementById("txtEmail").value;
+            var id = str.substring(0, str.indexOf("@"));
+            var domain = str.substring(str.indexOf("@") + 1);
+            document.write("Email Id:" + id + "<br>" + "Domain:" + domain)
+        }
+    </script>
+</head>
+
+<body>
+    Your Email:
+    <input type="text" id="txtEmail" onblur="printValue()">
+    <br>
+    <div id="lbl"></div>
+</body>
+
+</html>

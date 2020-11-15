@@ -1,0 +1,38 @@
+<head>
+    <script src="../node_modules/jquery//dist/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn-effect").click(function () {
+                $("#data").html($("form").serialize());
+                var result = $("form").serializeArray();
+                for (var property in result) {
+                    alert(result[property].value);
+                }
+                $.each(result, function (index, field) {
+                    $("#jsonData").append("<li> " + field.value + " </li>")
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <button id="btn-effect">Serialize</button>
+    <form>
+        <dl>
+            <dt>Name</dt>
+            <dd><input type="text" name="txtName"></dd>
+            <dt>Price</dt>
+            <dd><input type="text" name="txtPrice"></dd>
+            <dt>CIty</dt>
+            <dd>
+                <select name="lstCity">
+                    <option>Delhi</option>
+                    <option>HYd</option>
+                </select>
+            </dd>
+        </dl>
+    </form>
+    <div id="data"></div>
+    <div id="jsonData"></div>
+</body>

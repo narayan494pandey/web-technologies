@@ -1,0 +1,28 @@
+<head>
+    <script src="../node_modules//jquery/dist/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn-slide").click(function () {
+                $("#img-slide").slideToggle(6000)
+            })
+            
+        })
+        $(document).ready(function () {
+            $("#btn-animate").click(function () {
+                $("#img-animate").animate({width:"200px"})
+            })
+            
+        })
+    </script>
+</head>
+
+<body>
+    <button id="btn-slide">slide</button>
+    <img id="img-slide" src="../images/ball.png" width="100" height="100">
+    <button id="btn-animate">Animate</button>
+    <img id="img-animate" src="../images/ball.png" width="100" height="100">
+
+
+
+    </ol>
+</body>

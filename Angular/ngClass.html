@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+    <style>
+        .strike {
+            text-decoration: line-through;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .has-error {
+            color: red;
+            background-color: yellow;
+        }
+
+        .orange {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body ng-app="">
+    <p ng-class="{strike: deleted, bold: important, 'has-error': error}">Select CheckBox to Apply</p> <label> <input
+            type="checkbox" ng-model="deleted"> deleted (apply "strike" class) </label><br> <label> <input
+            type="checkbox" ng-model="important"> important (apply "bold" class) </label><br> <label> <input
+            type="checkbox" ng-model="error"> error (apply "has-error" class) </label>
+</body>
+
+</html>  

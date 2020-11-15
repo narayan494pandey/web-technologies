@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/jquery/dist/jquery.js"> </script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"> </script>
+    <script>
+        $(document).ready(function(){
+            $(".alert").hide();
+            $("#del").click(function(){
+                $(".alert").toggle(); 
+            })
+        })
+    </script>
+</head>
+<body>
+   <div class="container">
+       <h2>Bootstrap Jquery Alerts</h2>
+       <button id="del" class="btn btn-outline-danger" value="delete">delete</button>
+       <div class="alert alert-danger alert-dismissible" role="alert">
+           <button class="close" aria-label="close" data-dismiss="alert">X</button>
+           <h2 class="alert-heading">Record deleted...</h2>
+           <p class="alert-text">Record successfully remove from data source</p>
+       </div>
+   </div> 
+</body>
+</html>
