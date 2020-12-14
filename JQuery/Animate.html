@@ -9,7 +9,9 @@
         })
         $(document).ready(function () {
             $("#btn-animate").click(function () {
-                $("#img-animate").animate({width:"200px"})
+                $("#img-animate").animate({width:"200px"},3000,'swing',function(){
+                    alert("The img is now animate");
+                })
             })
             
         })
